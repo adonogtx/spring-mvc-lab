@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ProductRepository {
@@ -154,7 +155,11 @@ public class ProductRepository {
        products.addAll(List.of(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15));
     }
 
-    List<Product> getProducts() {
+    List<Product> findAll() {
         return List.copyOf(products);
+    }
+
+    Optional<Product> findById(Long id) {
+        return products.stream().filter(p -> p.getId().equals(id)).findFirst();
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class StoreRepository {
@@ -35,8 +36,12 @@ public class StoreRepository {
         stores.addAll(List.of(shinjuku,shibuya,kyoto));
     }
 
-    List<Store> getStores() {
+    List<Store> findAll() {
         return List.copyOf(stores);
+    }
+
+    Optional<Store> findById(Long id) {
+        return stores.stream().filter(s -> s.getId().equals(id)).findFirst();
     }
     
 }
