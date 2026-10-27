@@ -3,6 +3,7 @@ package io.github.adonogtx.springmvclab.store;
 import lombok.Builder;
 import lombok.Getter;
 
+
 @Builder
 @Getter
 public class Store {
