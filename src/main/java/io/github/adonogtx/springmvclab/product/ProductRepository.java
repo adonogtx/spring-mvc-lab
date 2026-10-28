@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public class ProductRepository {
     private final List<Product> products = new ArrayList<>();
+
     {
         var p1 = Product.builder()
                 .id(101L)
@@ -152,14 +153,17 @@ public class ProductRepository {
                 .stock(5)
                 .build();
 
-       products.addAll(List.of(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15));
+        products.addAll(List.of(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15));
     }
 
     List<Product> findAll() {
         return List.copyOf(products);
     }
 
-    Optional<Product> findById(Long id) {
-        return products.stream().filter(p -> p.getId().equals(id)).findFirst();
+    Optional<Product> findByStoreIdAndId(Long storeId, Long id) {
+        return products.stream()
+                .filter(product -> product.getStoreId().equals(storeId))
+                .filter(product -> product.getId().equals(id))
+                .findFirst();
     }
 }
