@@ -166,4 +166,10 @@ public class ProductRepository {
                 .filter(product -> product.getId().equals(id))
                 .findFirst();
     }
+
+    List<Product> findByStoreId(Long storeId) {
+        return products.stream()
+                .filter(p -> p.getStoreId().equals(storeId))
+                .toList();
+    }
 }
