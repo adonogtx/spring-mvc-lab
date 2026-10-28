@@ -3,6 +3,9 @@ package io.github.adonogtx.springmvclab.product;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Builder
 @Getter
 public class ProductGetResponse {
@@ -24,5 +27,9 @@ public class ProductGetResponse {
                 .priceYen(product.getPriceYen())
                 .stock(product.getStock())
                 .build();
+    }
+
+    static List<ProductGetResponse> toProductResponseList(List<Product> product) {
+        return product.stream().map(ProductGetResponse::toProductResponse).toList();
     }
 }

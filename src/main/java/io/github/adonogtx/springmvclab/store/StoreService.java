@@ -15,7 +15,7 @@ public class StoreService {
         return repository.findAll();
     }
 
-    Optional<Store> findById(Long id){
+    public Optional<Store> findById(Long id){
         return repository.findById(id);
     }
 }
